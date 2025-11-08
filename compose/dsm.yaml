@@ -1,0 +1,29 @@
+services:
+  dsm:
+    container_name: dsm1
+    image: vdsm/virtual-dsm
+    environment:
+      DISK_SIZE: "50G"
+      RAM_SIZE: "2G"
+      CPU_CORES: "2"
+      DHCP: "Y"
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+      - /dev/vhost-net
+    device_cgroup_rules:
+      - "c *:* rwm"
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 5000:5000
+    volumes:
+      - /volume2/docker/dsm1:/storage
+    stop_grace_period: 2m
+    networks:
+        vdsm:
+            ipv4_address: 192.168.123.160
+
+networks:
+  vdsm:
+    external: true
