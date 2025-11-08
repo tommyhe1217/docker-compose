@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  helios:
+    image: ghcr.io/moontechlab/helios:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - USERNAME=${USERNAME:-admin}
+      - PASSWORD=${PASSWORD:-admin}
+      - SUBSCRIPTION_URL=${SUBSCRIPTION_URL:-https://gist.githubusercontent.com/senshinya/5a5cb900dfa888fd61d767530f00fc48/raw/e674a9e9b0c6668004e2e5fe7873328925fa7157/gistfile1.txt}
+    volumes:
+      # 持久化数据库文件
+      - ./data:/data
+    restart: unless-stopped
