@@ -1,0 +1,13 @@
+services:
+ lottery:
+     image: fooololo/log-lottery:latest  #使用的镜像和版本
+     container_name: lottery  #3D抽奖程序
+     restart: no      # 重启策略，可根据实际情况而选择 no/always/unless-stopped/on-failure/on-failure:3
+     network_mode: bridge  #使用默认的桥接网络模式
+     ports:
+         - "6719:6719" # 端口映射，将容器的 6719 端口映射到NAS的 6719 端口
+     logging: # 配置日志管理
+         driver: "json-file" # 使用 JSON 文件驱动记录日志
+         options: # 日志驱动的选项
+             max-size: "5m" # 每个日志文件的最大大小为 5MB
+             max-file: "3"  # 最多保留 3 个日志文件
