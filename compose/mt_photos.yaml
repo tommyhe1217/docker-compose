@@ -1,0 +1,38 @@
+version: "3"
+services:
+  mtphotos:
+    image: registry.cn-hangzhou.aliyuncs.com/mtphotos/mt-photos:latest
+    container_name: mtphotos
+    restart: no      # 重启策略，可根据实际情况而选择 no/always/unless-stopped/on-failure/on-failure:3
+    ports:
+      - 8063:8063
+    volumes:
+      - /volume2/docker/mt_photos1/config:/config
+      - /volume1/Photos/upload:/upload
+      - /volume1/Photos/photos:/photos
+    environment:
+      - TZ=Asia/Shanghai
+      - PUID=1000
+      - PGID=100
+      - LANG=C.UTF-8
+    dns:
+      - 114.114.114.114
+    depends_on:
+      - mtphotos_ai
+      - mtphotos_face_api1
+  mtphotos_ai:
+    image: registry.cn-hangzhou.aliyuncs.com/mtphotos/mt-photos-ai:onnx-latest
+    container_name: mtphotos_ai
+    restart: no      # 重启策略，可根据实际情况而选择 no/always/unless-stopped/on-failure/on-failure:3
+    ports:
+      - 8060:8060
+    environment:
+      - API_AUTH_KEY=mt_photos_ai_extra
+  mtphotos_face_api1:
+    image: crpi-gcuyquw9co62xzjn.cn-guangzhou.personal.cr.aliyuncs.com/devfox101/mt-photos-insightface-unofficial:latest
+    container_name: mtphotos_face_api1
+    restart: no      # 重启策略，可根据实际情况而选择 no/always/unless-stopped/on-failure/on-failure:3
+    ports:
+      - 18066:8066
+    environment:
+      - API_AUTH_KEY=mt_photos_ai_extra
