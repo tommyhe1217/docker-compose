@@ -7,8 +7,8 @@ services:
       RAM_SIZE: "6G"
       CPU_CORES: "2"
       LANGUAGE: "CN"
-      USERNAME: "tommy"
-      PASSWORD: "H......"
+      USERNAME: "admin"
+      PASSWORD: "admin"
       DISK_SIZE: "100G"
     devices:
       - /dev/kvm
