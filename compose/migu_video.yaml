@@ -1,0 +1,10 @@
+
+services:
+    migu_video:
+        restart: always
+        network_mode: host
+        environment:
+            - mport=13000
+            - mhost=http://192.168.123.6:13000
+        container_name: migu_video
+        image: develop767/migu_video
