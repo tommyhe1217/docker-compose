@@ -9,4 +9,5 @@ services:
       XIAOMUSIC_PUBLIC_PORT: 58090
     volumes:
       - /volume2/docker/xiaomusic/app/music:/app/music
+
       - /volume2/docker/xiaomusic/app/conf:/app/conf
