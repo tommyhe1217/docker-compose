@@ -1,0 +1,15 @@
+version: '3'
+services:
+  dockerCopilot:
+    image: 0nlylty/dockercopilot:UGREEN
+    container_name: dockerCopilot
+    ports:
+      - "12712:12712"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/data #此处需要自己设置路径。目前存储备份文件，未来可能存储配置文件，这里放在./data目录。
+    environment:
+      - secretKey=admin # 请将此处替换为自定义密码，密码需大于八位且非纯数字
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    restart: no      # 重启策略，可根据实际情况而选择 no/always/unless-stopped/on-failure/on-failure:3
+    privileged: true
