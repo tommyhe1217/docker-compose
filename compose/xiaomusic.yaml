@@ -8,6 +8,6 @@ services:
     environment:
       XIAOMUSIC_PUBLIC_PORT: 58090
     volumes:
-      - /volume2/docker/xiaomusic/app/music:/app/music
-
-      - /volume2/docker/xiaomusic/app/conf:/app/conf
+      - /vol2/1000/sata-1T/docker/ xiaomusic/app/music:/app/music  #下载的歌曲会再这里
+      - /vol2/1000/sata-1T/docker/ xiaomusic/app/conf:/app/conf
+      - /vol2/1000/sata-1T/music:/app/music/music1   #NAS本地的音乐地址
