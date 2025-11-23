@@ -9,5 +9,5 @@ services:
       - USERNAME=admin
       - PASSWORD=admin   #记得修改自己的密码
       - NEXT_PUBLIC_STORAGE_TYPE=upstash
-      - UPSTASH_URL=https://cheerful-joey-59786.upstash.io
-      - UPSTASH_TOKEN=AemKAAIncDFjNDc1NGI5NmU2YmI0ZjVhOWY1Yzk4ZmM0YmI4MTU1ZHAxNTk3ODY
+      - UPSTASH_URL=##上面 https 开头的 HTTPS ENDPOINT
+      - UPSTASH_TOKEN=#上面的 TOKEN
