@@ -1,0 +1,9 @@
+services:
+  omnibox:
+    image: docker.1ms.run/lampon/omnibox:latest
+    container_name: omnibox
+    restart: unless-stopped
+    ports:
+      - "7023:7023"
+    volumes:
+      - ./omnibox/data:/app/data
